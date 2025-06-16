@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Student Helper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="logo">AI Student Helper</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#summarize" class="nav-link"><i class="fas fa-compress-alt"></i> Summarize Text</a></li>
+                    <li><a href="#essay-ideas" class="nav-link"><i class="fas fa-lightbulb"></i> Essay Ideas</a></li>
+                    <li><a href="#explain" class="nav-link"><i class="fas fa-book-open"></i> Explain Concepts</a></li>
+                    <li><a href="#translate" class="nav-link"><i class="fas fa-language"></i> Translate</a></li>
+                    <li><a href="#mcq" class="nav-link"><i class="fas fa-question-circle"></i> Generate MCQs</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <span class="theme-label">
+                    <i class="fas fa-sun theme-icon"></i>
+                    <span id="theme-text">Dark Mode</span>
+                </span>
+                <label class="switch" for="theme-switch">
+                    <input type="checkbox" id="theme-switch" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mobile Header -->
+            <header class="mobile-header">
+                <div class="mobile-nav">
+                    <button id="mobile-menu-toggle" class="mobile-menu-btn" title="Toggle Navigation Menu" aria-label="Toggle Navigation Menu">
+                        <i class="fas fa-bars"></i>
+                        <span>Menu</span>
+                    </button>
+                    <h1 class="mobile-title">AI Student Helper</h1>
+                    <button id="mobile-theme-toggle" class="mobile-theme-btn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Home Section -->
+            <section id="home" class="section active" data-aos="fade-up">
+                <div class="hero">
+                    <h1>Welcome to AI Student Helper</h1>
+                    <p>Your intelligent companion for academic success</p>
+                    <div class="features-grid">
+                        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-compress-alt"></i>
+                            <h3>Summarize Text</h3>
+                            <p>Convert long articles into concise summaries</p>
+                        </div>
+                        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Essay Ideas</h3>
+                            <p>Generate creative essay topics and outlines</p>
+                        </div>
+                        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fas fa-book-open"></i>
+                            <h3>Explain Concepts</h3>
+                            <p>Simplify complex topics for better understanding</p>
+                        </div>
+                        <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                            <i class="fas fa-language"></i>
+                            <h3>Translate</h3>
+                            <p>Translate between English and Arabic</p>
+                        </div>
+                        <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                            <i class="fas fa-question-circle"></i>
+                            <h3>Generate MCQs</h3>
+                            <p>Create multiple-choice questions from any text</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Summarize Text Section -->
+            <section id="summarize" class="section" data-aos="fade-up">
+                <div class="tool-container">
+                    <h2><i class="fas fa-compress-alt"></i> Summarize Text</h2>
+                    <p>Paste a long text and get a concise summary.</p>
+                    
+                    <div class="input-area">
+                        <textarea id="summarize-input" placeholder="Paste your text here (minimum 100 words)..."></textarea>
+                        <div class="controls">
+                            <div class="action-buttons">
+                                <button id="summarize-btn" class="primary-btn">Summarize</button>
+                                <button id="summarize-regenerate-btn" class="secondary-btn" style="display: none;">
+                                    <i class="fas fa-magic"></i> Generate Again
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-area" id="summarize-result">
+                        <div class="result-placeholder">Your summary will appear here</div>
+                    </div>
+                    
+                    <!-- Result Actions -->
+                    <div class="result-actions" id="summarize-actions" style="display: none;">
+                        <button class="action-btn copy-btn" onclick="copyToClipboard('summarize-result')">
+                            <i class="fas fa-copy"></i> Copy Summary
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Essay Ideas Section -->
+            <section id="essay-ideas" class="section" data-aos="fade-up">
+                <div class="tool-container">
+                    <h2><i class="fas fa-lightbulb"></i> Essay Ideas Generator</h2>
+                    <p>Get creative essay ideas and outlines based on a title or topic.</p>
+                    
+                    <div class="input-area">
+                        <input type="text" id="essay-topic-input" placeholder="Enter essay title or topic...">
+                        
+                        <!-- Generation Options -->
+                        <div class="generation-options">
+                            <h4>Choose generation type:</h4>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="generation-type" value="full" checked>
+                                    <span class="radio-custom"></span>
+                                    <div class="option-content">
+                                        <i class="fas fa-list-ul"></i>
+                                        <span>Generate full outline</span>
+                                        <small>Detailed structure with introduction, body points, and conclusion</small>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="generation-type" value="titles">
+                                    <span class="radio-custom"></span>
+                                    <div class="option-content">
+                                        <i class="fas fa-heading"></i>
+                                        <span>Generate only titles</span>
+                                        <small>Multiple essay title suggestions for your topic</small>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="controls">
+                            <div class="action-buttons">
+                                <button id="essay-ideas-btn" class="primary-btn">Generate Ideas</button>
+                                <button id="essay-regenerate-btn" class="secondary-btn" style="display: none;">
+                                    <i class="fas fa-magic"></i> Generate Again
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-area" id="essay-ideas-result">
+                        <div class="result-placeholder">Your essay ideas will appear here</div>
+                    </div>
+                    
+                    <!-- Result Actions -->
+                    <div class="result-actions" id="essay-actions" style="display: none;">
+                        <button class="action-btn copy-btn" onclick="copyToClipboard('essay-ideas-result')">
+                            <i class="fas fa-copy"></i> Copy All
+                        </button>
+                        <button class="action-btn use-btn" id="use-title-btn" style="display: none;" onclick="useSelectedTitle()">
+                            <i class="fas fa-edit"></i> Use Selected Title
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Explain Concepts Section -->
+            <section id="explain" class="section" data-aos="fade-up">
+                <div class="tool-container">
+                    <h2><i class="fas fa-book-open"></i> Explain Concepts</h2>
+                    <p>Get simple explanations for complex terms or scientific concepts.</p>
+                    
+                    <div class="input-area">
+                        <input type="text" id="explain-input" placeholder="Enter a difficult word or concept...">
+                        <div class="controls">
+                            <div class="action-buttons">
+                                <button id="explain-btn" class="primary-btn">Explain</button>
+                                <button id="explain-regenerate-btn" class="secondary-btn" style="display: none;">
+                                    <i class="fas fa-magic"></i> Generate Again
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-area" id="explain-result">
+                        <div class="result-placeholder">Your explanation will appear here</div>
+                    </div>
+                    
+                    <!-- Result Actions -->
+                    <div class="result-actions" id="explain-actions" style="display: none;">
+                        <button class="action-btn copy-btn" onclick="copyToClipboard('explain-result')">
+                            <i class="fas fa-copy"></i> Copy Explanation
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Translate Section -->
+            <section id="translate" class="section" data-aos="fade-up">
+                <div class="tool-container">
+                    <h2><i class="fas fa-language"></i> Translate</h2>
+                    <p>Translate text between English and Arabic.</p>
+                    
+                    <div class="input-area">
+                        <div class="translate-controls">
+                            <select id="translate-from" title="Source Language" aria-label="Source Language">
+                                <option value="en">English</option>
+                                <option value="ar">Arabic</option>
+                            </select>
+                            <button id="swap-languages" class="icon-btn" title="Swap Languages" aria-label="Swap Languages">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                            <select id="translate-to" title="Target Language" aria-label="Target Language">
+                                <option value="ar">Arabic</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                        <textarea id="translate-input" placeholder="Enter text to translate..."></textarea>
+                        <div class="controls">
+                            <button id="translate-btn" class="primary-btn">Translate</button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-area" id="translate-result">
+                        <div class="result-placeholder">Your translation will appear here</div>
+                    </div>
+                    
+                    <!-- Result Actions -->
+                    <div class="result-actions" id="translate-actions" style="display: none;">
+                        <button class="action-btn copy-btn" onclick="copyToClipboard('translate-result')">
+                            <i class="fas fa-copy"></i> Copy Translation
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MCQ Generator Section -->
+            <section id="mcq" class="section" data-aos="fade-up">
+                <div class="tool-container">
+                    <h2><i class="fas fa-question-circle"></i> MCQ Generator</h2>
+                    <p>Generate multiple-choice questions from any text.</p>
+                    
+                    <div class="input-area">
+                        <textarea id="mcq-input" placeholder="Paste a paragraph or text to generate questions from..."></textarea>
+                        <div class="controls">
+                            <div class="input-group">
+                                <label for="mcq-count">Number of questions:</label>
+                                <input type="number" id="mcq-count" min="1" max="10" value="5">
+                            </div>
+                            <div class="mcq-buttons">
+                                <button id="mcq-btn" class="primary-btn">Generate MCQs</button>
+                                <button id="mcq-regenerate-btn" class="secondary-btn" style="display: none;">
+                                    <i class="fas fa-redo"></i> Generate Again
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-area" id="mcq-result">
+                        <div class="result-placeholder">Your MCQs will appear here</div>
+                    </div>
+                    
+                    <!-- Result Actions -->
+                    <div class="result-actions" id="mcq-actions" style="display: none;">
+                        <button class="action-btn copy-btn" onclick="copyToClipboard('mcq-result')">
+                            <i class="fas fa-copy"></i> Copy MCQs
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made by Mohamed Abdelnaser – <a href="https://3bnaser.tech" target="_blank" rel="noopener">3bnaser.tech</a></p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
