@@ -783,7 +783,7 @@ async function copyToClipboard(elementId) {
     const resultContent = resultElement.querySelector('.result-content');
     
     if (!resultContent) {
-        showSimpleCopyMessage('لا يوجد محتوى للنسخ', 'error');
+        showSimpleCopyMessage('No content to copy', 'error');
         return;
     }
     
@@ -792,7 +792,7 @@ async function copyToClipboard(elementId) {
     
     try {
         await navigator.clipboard.writeText(textContent);
-        showSimpleCopyMessage('تم النسخ ✓', 'success');
+        showSimpleCopyMessage('Copied ✓', 'success');
     } catch (err) {
         // Fallback for older browsers
         const textArea = document.createElement('textarea');
@@ -802,7 +802,7 @@ async function copyToClipboard(elementId) {
         document.execCommand('copy');
         document.body.removeChild(textArea);
         
-        showSimpleCopyMessage('تم النسخ ✓', 'success');
+        showSimpleCopyMessage('Copied ✓', 'success');
     }
 }
 

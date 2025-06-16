@@ -1029,16 +1029,19 @@ select {
 .simple-copy-message {
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--success-color);
     color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 500;
     z-index: 1000;
-    animation: slideIn 0.3s ease-out;
+    animation: slideInTop 0.3s ease-out;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-align: center;
+    min-width: 120px;
 }
 
 .simple-copy-message.error {
@@ -1046,36 +1049,39 @@ select {
 }
 
 .simple-copy-message.fade-out {
-    animation: slideOut 0.3s ease-in forwards;
+    animation: slideOutTop 0.3s ease-in forwards;
 }
 
-@keyframes slideIn {
+@keyframes slideInTop {
     from {
-        transform: translateX(100%);
+        transform: translateX(-50%) translateY(-100%);
         opacity: 0;
     }
     to {
-        transform: translateX(0);
+        transform: translateX(-50%) translateY(0);
         opacity: 1;
     }
 }
 
-@keyframes slideOut {
+@keyframes slideOutTop {
     from {
-        transform: translateX(0);
+        transform: translateX(-50%) translateY(0);
         opacity: 1;
     }
     to {
-        transform: translateX(100%);
+        transform: translateX(-50%) translateY(-100%);
         opacity: 0;
     }
 }
 
 @media (max-width: 768px) {
     .simple-copy-message {
-        top: 10px;
-        right: 10px;
-        padding: 6px 12px;
-        font-size: 0.8rem;
+        top: 80px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        padding: 10px 20px !important;
+        font-size: 0.9rem !important;
+        min-width: 100px !important;
     }
 }
