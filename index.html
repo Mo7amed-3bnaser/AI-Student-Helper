@@ -26,6 +26,7 @@
                     <li><a href="#explain" class="nav-link"><i class="fas fa-book-open"></i> Explain Concepts</a></li>
                     <li><a href="#translate" class="nav-link"><i class="fas fa-language"></i> Translate</a></li>
                     <li><a href="#mcq" class="nav-link"><i class="fas fa-question-circle"></i> Generate MCQs</a></li>
+                    <li><a href="#grammar" class="nav-link"><i class="fas fa-spell-check"></i> Grammar Fixer</a></li>
                 </ul>
             </nav>
             <div class="theme-toggle">
@@ -86,6 +87,11 @@
                             <i class="fas fa-question-circle"></i>
                             <h3>Generate MCQs</h3>
                             <p>Create multiple-choice questions from any text</p>
+                        </div>
+                        <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                            <i class="fas fa-spell-check"></i>
+                            <h3>Grammar Fixer</h3>
+                            <p>Check and fix grammar, spelling, and punctuation errors</p>
                         </div>
                     </div>
                 </div>
@@ -217,21 +223,184 @@
             <section id="translate" class="section" data-aos="fade-up">
                 <div class="tool-container">
                     <h2><i class="fas fa-language"></i> Translate</h2>
-                    <p>Translate text between English and Arabic.</p>
+                    <p>Translate text between multiple languages with high accuracy.</p>
                     
                     <div class="input-area">
                         <div class="translate-controls">
-                            <select id="translate-from" title="Source Language" aria-label="Source Language">
-                                <option value="en">English</option>
-                                <option value="ar">Arabic</option>
-                            </select>
-                            <button id="swap-languages" class="icon-btn" title="Swap Languages" aria-label="Swap Languages">
+                            <div class="language-selector">
+                                <label class="language-label">From:</label>
+                                <select id="translate-from" title="Source Language" aria-label="Source Language" class="language-select">
+                                    <option value="auto">🌐 Auto Detect</option>
+                                    <option value="en">🇺🇸 English</option>
+                                    <option value="ar">🇸🇦 Arabic (العربية)</option>
+                                    <option value="es">🇪🇸 Spanish (Español)</option>
+                                    <option value="fr">🇫🇷 French (Français)</option>
+                                    <option value="de">🇩🇪 German (Deutsch)</option>
+                                    <option value="it">🇮🇹 Italian (Italiano)</option>
+                                    <option value="pt">🇵🇹 Portuguese (Português)</option>
+                                    <option value="ru">🇷🇺 Russian (Русский)</option>
+                                    <option value="ja">🇯🇵 Japanese (日本語)</option>
+                                    <option value="ko">🇰🇷 Korean (한국어)</option>
+                                    <option value="zh">🇨🇳 Chinese (中文)</option>
+                                    <option value="hi">🇮🇳 Hindi (हिन्दी)</option>
+                                    <option value="tr">🇹🇷 Turkish (Türkçe)</option>
+                                    <option value="nl">🇳🇱 Dutch (Nederlands)</option>
+                                    <option value="sv">🇸🇪 Swedish (Svenska)</option>
+                                    <option value="no">🇳🇴 Norwegian (Norsk)</option>
+                                    <option value="da">🇩🇰 Danish (Dansk)</option>
+                                    <option value="fi">🇫🇮 Finnish (Suomi)</option>
+                                    <option value="pl">🇵🇱 Polish (Polski)</option>
+                                    <option value="cs">🇨🇿 Czech (Čeština)</option>
+                                    <option value="sk">🇸🇰 Slovak (Slovenčina)</option>
+                                    <option value="hu">🇭🇺 Hungarian (Magyar)</option>
+                                    <option value="ro">🇷🇴 Romanian (Română)</option>
+                                    <option value="bg">🇧🇬 Bulgarian (Български)</option>
+                                    <option value="hr">🇭🇷 Croatian (Hrvatski)</option>
+                                    <option value="sr">🇷🇸 Serbian (Српски)</option>
+                                    <option value="sl">🇸🇮 Slovenian (Slovenščina)</option>
+                                    <option value="et">🇪🇪 Estonian (Eesti)</option>
+                                    <option value="lv">🇱🇻 Latvian (Latviešu)</option>
+                                    <option value="lt">🇱🇹 Lithuanian (Lietuvių)</option>
+                                    <option value="el">🇬🇷 Greek (Ελληνικά)</option>
+                                    <option value="he">🇮🇱 Hebrew (עברית)</option>
+                                    <option value="fa">🇮🇷 Persian (فارسی)</option>
+                                    <option value="ur">🇵🇰 Urdu (اردو)</option>
+                                    <option value="th">🇹🇭 Thai (ไทย)</option>
+                                    <option value="vi">🇻🇳 Vietnamese (Tiếng Việt)</option>
+                                    <option value="id">🇮🇩 Indonesian (Bahasa Indonesia)</option>
+                                    <option value="ms">🇲🇾 Malay (Bahasa Melayu)</option>
+                                    <option value="tl">🇵🇭 Filipino (Filipino)</option>
+                                    <option value="sw">🇰🇪 Swahili (Kiswahili)</option>
+                                    <option value="am">🇪🇹 Amharic (አማርኛ)</option>
+                                    <option value="bn">🇧🇩 Bengali (বাংলা)</option>
+                                    <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+                                    <option value="kn">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                                    <option value="ml">🇮🇳 Malayalam (മലയാളം)</option>
+                                    <option value="mr">🇮🇳 Marathi (मराठी)</option>
+                                    <option value="ne">🇳🇵 Nepali (नेपाली)</option>
+                                    <option value="pa">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+                                    <option value="si">🇱🇰 Sinhala (සිංහල)</option>
+                                    <option value="ta">🇮🇳 Tamil (தமிழ்)</option>
+                                    <option value="te">🇮🇳 Telugu (తెలుగు)</option>
+                                    <option value="my">🇲🇲 Myanmar (မြန်မာ)</option>
+                                    <option value="km">🇰🇭 Khmer (ខ្មែរ)</option>
+                                    <option value="lo">🇱🇦 Lao (ລາວ)</option>
+                                    <option value="ka">🇬🇪 Georgian (ქართული)</option>
+                                    <option value="hy">🇦🇲 Armenian (Հայերեն)</option>
+                                    <option value="az">🇦🇿 Azerbaijani (Azərbaycan)</option>
+                                    <option value="kk">🇰🇿 Kazakh (Қазақ)</option>
+                                    <option value="ky">🇰🇬 Kyrgyz (Кыргыз)</option>
+                                    <option value="tg">🇹🇯 Tajik (Тоҷикӣ)</option>
+                                    <option value="tk">🇹🇲 Turkmen (Türkmen)</option>
+                                    <option value="uz">🇺🇿 Uzbek (O'zbek)</option>
+                                    <option value="mn">🇲🇳 Mongolian (Монгол)</option>
+                                    <option value="is">🇮🇸 Icelandic (Íslenska)</option>
+                                    <option value="mt">🇲🇹 Maltese (Malti)</option>
+                                    <option value="ga">🇮🇪 Irish (Gaeilge)</option>
+                                    <option value="cy">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Welsh (Cymraeg)</option>
+                                    <option value="eu">🇪🇸 Basque (Euskera)</option>
+                                    <option value="ca">🇪🇸 Catalan (Català)</option>
+                                    <option value="gl">🇪🇸 Galician (Galego)</option>
+                                    <option value="af">🇿🇦 Afrikaans</option>
+                                    <option value="zu">🇿🇦 Zulu (isiZulu)</option>
+                                    <option value="xh">🇿🇦 Xhosa (isiXhosa)</option>
+                                    <option value="st">🇿🇦 Sesotho</option>
+                                    <option value="nso">🇿🇦 Northern Sotho</option>
+                                    <option value="tn">🇿🇦 Tswana (Setswana)</option>
+                                    <option value="ss">🇿🇦 Swati (siSwati)</option>
+                                    <option value="ve">🇿🇦 Venda (Tshivenḓa)</option>
+                                    <option value="ts">🇿🇦 Tsonga (Xitsonga)</option>
+                                    <option value="nr">🇿🇦 Southern Ndebele</option>
+                                </select>
+                            </div>
+                            <button id="swap-languages" class="swap-btn" title="Swap Languages" aria-label="Swap Languages">
                                 <i class="fas fa-exchange-alt"></i>
                             </button>
-                            <select id="translate-to" title="Target Language" aria-label="Target Language">
-                                <option value="ar">Arabic</option>
-                                <option value="en">English</option>
-                            </select>
+                            <div class="language-selector">
+                                <label class="language-label">To:</label>
+                                <select id="translate-to" title="Target Language" aria-label="Target Language" class="language-select">
+                                    <option value="en">🇺🇸 English</option>
+                                    <option value="ar" selected>🇸🇦 Arabic (العربية)</option>
+                                    <option value="es">🇪🇸 Spanish (Español)</option>
+                                    <option value="fr">🇫🇷 French (Français)</option>
+                                    <option value="de">🇩🇪 German (Deutsch)</option>
+                                    <option value="it">🇮🇹 Italian (Italiano)</option>
+                                    <option value="pt">🇵🇹 Portuguese (Português)</option>
+                                    <option value="ru">🇷🇺 Russian (Русский)</option>
+                                    <option value="ja">🇯🇵 Japanese (日本語)</option>
+                                    <option value="ko">🇰🇷 Korean (한국어)</option>
+                                    <option value="zh">🇨🇳 Chinese (中文)</option>
+                                    <option value="hi">🇮🇳 Hindi (हिन्दी)</option>
+                                    <option value="tr">🇹🇷 Turkish (Türkçe)</option>
+                                    <option value="nl">🇳🇱 Dutch (Nederlands)</option>
+                                    <option value="sv">🇸🇪 Swedish (Svenska)</option>
+                                    <option value="no">🇳🇴 Norwegian (Norsk)</option>
+                                    <option value="da">🇩🇰 Danish (Dansk)</option>
+                                    <option value="fi">🇫🇮 Finnish (Suomi)</option>
+                                    <option value="pl">🇵🇱 Polish (Polski)</option>
+                                    <option value="cs">🇨🇿 Czech (Čeština)</option>
+                                    <option value="sk">🇸🇰 Slovak (Slovenčina)</option>
+                                    <option value="hu">🇭🇺 Hungarian (Magyar)</option>
+                                    <option value="ro">🇷🇴 Romanian (Română)</option>
+                                    <option value="bg">🇧🇬 Bulgarian (Български)</option>
+                                    <option value="hr">🇭🇷 Croatian (Hrvatski)</option>
+                                    <option value="sr">🇷🇸 Serbian (Српски)</option>
+                                    <option value="sl">🇸🇮 Slovenian (Slovenščina)</option>
+                                    <option value="et">🇪🇪 Estonian (Eesti)</option>
+                                    <option value="lv">🇱🇻 Latvian (Latviešu)</option>
+                                    <option value="lt">🇱🇹 Lithuanian (Lietuvių)</option>
+                                    <option value="el">🇬🇷 Greek (Ελληνικά)</option>
+                                    <option value="he">🇮🇱 Hebrew (עברית)</option>
+                                    <option value="fa">🇮🇷 Persian (فارسی)</option>
+                                    <option value="ur">🇵🇰 Urdu (اردو)</option>
+                                    <option value="th">🇹🇭 Thai (ไทย)</option>
+                                    <option value="vi">🇻🇳 Vietnamese (Tiếng Việt)</option>
+                                    <option value="id">🇮🇩 Indonesian (Bahasa Indonesia)</option>
+                                    <option value="ms">🇲🇾 Malay (Bahasa Melayu)</option>
+                                    <option value="tl">🇵🇭 Filipino (Filipino)</option>
+                                    <option value="sw">🇰🇪 Swahili (Kiswahili)</option>
+                                    <option value="am">🇪🇹 Amharic (አማርኛ)</option>
+                                    <option value="bn">🇧🇩 Bengali (বাংলা)</option>
+                                    <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+                                    <option value="kn">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                                    <option value="ml">🇮🇳 Malayalam (മലയാളം)</option>
+                                    <option value="mr">🇮🇳 Marathi (मराठी)</option>
+                                    <option value="ne">🇳🇵 Nepali (नेपाली)</option>
+                                    <option value="pa">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+                                    <option value="si">🇱🇰 Sinhala (සිංහල)</option>
+                                    <option value="ta">🇮🇳 Tamil (தமிழ்)</option>
+                                    <option value="te">🇮🇳 Telugu (తెలుగు)</option>
+                                    <option value="my">🇲🇲 Myanmar (မြန်မာ)</option>
+                                    <option value="km">🇰🇭 Khmer (ខ្មែរ)</option>
+                                    <option value="lo">🇱🇦 Lao (ລາວ)</option>
+                                    <option value="ka">🇬🇪 Georgian (ქართული)</option>
+                                    <option value="hy">🇦🇲 Armenian (Հայերեն)</option>
+                                    <option value="az">🇦🇿 Azerbaijani (Azərbaycan)</option>
+                                    <option value="kk">🇰🇿 Kazakh (Қазақ)</option>
+                                    <option value="ky">🇰🇬 Kyrgyz (Кыргыз)</option>
+                                    <option value="tg">🇹🇯 Tajik (Тоҷикӣ)</option>
+                                    <option value="tk">🇹🇲 Turkmen (Türkmen)</option>
+                                    <option value="uz">🇺🇿 Uzbek (O'zbek)</option>
+                                    <option value="mn">🇲🇳 Mongolian (Монгол)</option>
+                                    <option value="is">🇮🇸 Icelandic (Íslenska)</option>
+                                    <option value="mt">🇲🇹 Maltese (Malti)</option>
+                                    <option value="ga">🇮🇪 Irish (Gaeilge)</option>
+                                    <option value="cy">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Welsh (Cymraeg)</option>
+                                    <option value="eu">🇪🇸 Basque (Euskera)</option>
+                                    <option value="ca">🇪🇸 Catalan (Català)</option>
+                                    <option value="gl">🇪🇸 Galician (Galego)</option>
+                                    <option value="af">🇿🇦 Afrikaans</option>
+                                    <option value="zu">🇿🇦 Zulu (isiZulu)</option>
+                                    <option value="xh">🇿🇦 Xhosa (isiXhosa)</option>
+                                    <option value="st">🇿🇦 Sesotho</option>
+                                    <option value="nso">🇿🇦 Northern Sotho</option>
+                                    <option value="tn">🇿🇦 Tswana (Setswana)</option>
+                                    <option value="ss">🇿🇦 Swati (siSwati)</option>
+                                    <option value="ve">🇿🇦 Venda (Tshivenḓa)</option>
+                                    <option value="ts">🇿🇦 Tsonga (Xitsonga)</option>
+                                    <option value="nr">🇿🇦 Southern Ndebele</option>
+                                </select>
+                            </div>
                         </div>
                         <textarea id="translate-input" placeholder="Enter text to translate..."></textarea>
                         <div class="controls">
@@ -286,6 +455,37 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Grammar Fixer Section -->
+            <section id="grammar" class="section" data-aos="fade-up">
+                <div class="tool-container">
+                    <h2><i class="fas fa-spell-check"></i> Grammar Fixer</h2>
+                    <p>Check and fix grammar, spelling, and punctuation errors in your text.</p>
+                    
+                    <div class="input-area">
+                        <textarea id="grammar-input" placeholder="Paste your text here to check and fix grammar errors..."></textarea>
+                        <div class="controls">
+                            <div class="action-buttons">
+                                <button id="grammar-btn" class="primary-btn">Fix Grammar</button>
+                                <button id="grammar-regenerate-btn" class="secondary-btn" style="display: none;">
+                                    <i class="fas fa-magic"></i> Fix Again
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-area" id="grammar-result">
+                        <div class="result-placeholder">Your corrected text will appear here</div>
+                    </div>
+                    
+                    <!-- Result Actions -->
+                    <div class="result-actions" id="grammar-actions" style="display: none;">
+                        <button class="action-btn copy-btn" onclick="copyToClipboard('grammar-result')">
+                            <i class="fas fa-copy"></i> Copy Corrected Text
+                        </button>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -299,7 +499,14 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>Made by Mohamed Abdelnaser – <a href="https://3bnaser.tech" target="_blank" rel="noopener">3bnaser.tech</a></p>
+        <p>
+            <span class="creator-info">
+                <i class="fas fa-code creator-icon"></i>
+                <span class="creator-text">Made by Mohamed Abdelnaser</span>
+            </span>
+            <span class="separator">–</span>
+            <a href="https://3bnaser.tech" target="_blank" rel="noopener" class="website-link">3bnaser.tech</a>
+        </p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
